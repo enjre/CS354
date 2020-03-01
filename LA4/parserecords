@@ -1,0 +1,59 @@
+#!/bin/awk -f
+
+
+BEGIN {
+    
+    print "<html?\n\n" > "parseData.html"
+    print "<head?\n" >> "parseData.html"
+
+
+	 print "</head>\n\n" >> "parseData.html"
+     print "<body>\n" >> "parseData.html"
+
+    print "<h1>Replace Furnace</h1>\n\n" >> "parseData.html"
+	print "<table style=\"width:100%\">\n" >> "parseData.html"
+	print "<tr>\n" >> "parseData.html"
+
+
+
+	print "\t<th align=\"left\">DATE</th>\n" >> "parseData.html"
+	print "\t<th align=\"left\">SUBDIVISION</th>\n" >> "parseData.html"
+	print "\t<th align=\"left\">LOT</th>\n" >> "parseData.html"
+	print "\t<th align=\"left\">BLOCK</th>\n" >> "parseData.html"
+	print "\t<th align=\"left\">VALUE</th>\n" >> "parseData.html"
+	print "</tr>\n" >> "parseData.html"
+
+	FPAT = "([^,]+)|(\"[^\"]+\")"
+}
+
+{
+	if(tolower($3) ~ /^replace furnace/) {
+		print "<tr>" >> "parseData.html"
+		for(i=1; i<= NF; i++) {
+			if(i==1) {
+				printf("\t<td>%s</td>\n", $i) >> "parseData.html"
+			}
+			if(i==5) {
+				printf("\t<td>%s</td>\n", $i) >> "parseData.html"
+			}
+			if(i==6) {
+				printf("\t<td>%s</td>\n", $i) >> "parseData.html"
+			}
+			if(i==7) {
+				printf("\t<td>%s</td>\n", $i) >> "parseData.html"
+			}
+			if(i==8) {
+				printf("\t<td>%s</td>\n", $i) >> "parseData.html"
+			}
+		}	
+
+		print "</tr>\n" >> "parseData.html"
+	}
+}
+
+
+END {
+	print "</table>\n\n" >> "parseData.html"
+	print "</body>\n" >> "parseData.html"
+	print "</html>\n" >> "parseData.html"
+}
