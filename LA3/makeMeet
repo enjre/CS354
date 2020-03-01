@@ -1,0 +1,2 @@
+#~/bin/bash
+app gprolog --consult-file meetone.pl
